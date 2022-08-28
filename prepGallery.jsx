@@ -15,6 +15,7 @@ var logoHorizontalPosition = -380
 
 var cancelled = false
 var filenameDelimiter = "+"
+var fileSearchTypes = "*.jpg"
 
 $.writeln("Starting prep gallery script...");
 
@@ -172,7 +173,9 @@ dlg.okButton.onClick = function () {
     } 
     // Check there are files to process
     inputFolder =  Folder(dlg.selectFoldersPanel.inputFolderEditText.text)
-    var fileList = inputFolder.getFiles()
+    var fileList = inputFolder.getFiles(fileSearchTypes)
+    $.writeln("fileList=" + fileList)
+
     var numFiles = fileList.length
     if (numFiles == 0) {
         alert("No files found in input folder '" + decodeURI(inputFolder) + "'.", "Input Folder Error")
@@ -284,7 +287,7 @@ if (!cancelled) {
     $.writeln("Searching input directory '" + inputFolder + "' for JPEGs to process and save into '" + outputFolder + "'"); 
 
     // Process the files
-    var fileList = inputFolder.getFiles()
+    var fileList = inputFolder.getFiles(fileSearchTypes)
     var numFiles = fileList.length
     $.writeln("Found '" + numFiles + "' files to process"); 
 
