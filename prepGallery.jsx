@@ -445,6 +445,7 @@ function pastePhotoImageFromClipboardToNewDocAndMoveUp(newDocument) {
 }
 
 function saveJPEG(doc, saveFile, qty) {
+    // Resize to final required size.
     doc.resizeImage(UnitValue(1024, "px"), UnitValue(731, "px"), null, ResampleMethod.BICUBIC);
 
     var saveOptions = new JPEGSaveOptions();
